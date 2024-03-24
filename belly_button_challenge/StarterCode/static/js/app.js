@@ -49,3 +49,4 @@ let bbdata = [trace1];
   // This will use default parameters for the layout
   Plotly.newPlot("plot", bbdata);
 });
+
