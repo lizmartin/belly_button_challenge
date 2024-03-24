@@ -34,7 +34,7 @@ function plotMetric(sampleArray, names, metadata){
             orientation: "h"
         };
     }
-let data = [trace 1];
+let bbdata = [trace1];
   // Create our second trace
   //let trace2 = {
     //x: [0, 1, 2, 3, 4, 5],
@@ -47,5 +47,5 @@ let data = [trace 1];
   
   // Note that we omitted the layout object this time
   // This will use default parameters for the layout
-  Plotly.newPlot("plot", data);
+  Plotly.newPlot("plot", bbdata);
 });
