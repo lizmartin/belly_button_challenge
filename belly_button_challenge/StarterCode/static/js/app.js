@@ -28,7 +28,7 @@ d3.json(url).then(function(data) {
 // Create first graph
 function plotMetric(sampleArray, names, metadata){
         let trace1 = {
-            x: [names],
+            //x: [<name for data out of my samples>],
             y: [otu_ids],
             type: "bar",
             orientation: "h"
