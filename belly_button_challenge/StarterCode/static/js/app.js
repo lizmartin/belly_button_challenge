@@ -8,10 +8,10 @@ d3.json(url).then(function(bb_data) {
     // Create initial variables for data set.
     let subject_names = bb_data.names;
     let metadata = bb_data.metadata;
-    let samples = bb_data.samples;
+    let sample_set = bb_data.samples;
         // Loop through sample array to get data
         function init(){
-            let filteredSamples = samples.filter(samples => samples.id =="940")
+            let filteredSamples = sample_set.filter(sample => sample.id =="940")
 
             // Create first graph (bar chart)
             let barGraph = [{
@@ -53,21 +53,23 @@ d3.json(url).then(function(bb_data) {
             Object.entries(filtered_metadata).forEach(([key, v]) => {
                 metadata_info.append("p").text('${key}: ${v}');
             });
-        }
+        };
 
+        // Drop down menu configuration
+        let dropdown = d2.select("#selDataset");
 
-  // Create our second trace
-  //let trace2 = {
-    //x: [0, 1, 2, 3, 4, 5],
-   // y: [0, 1, 4, 9, 16, 25],
-    //type: "scatter"
-  //};
-  
-  // The data array consists of both traces
-  //let data = [trace1, trace2];
-  
-  // Note that we omitted the layout object this time
-  // This will use default parameters for the layout
-  //Plotly.newPlot("plot", bbdata);
-//});
+        // Bind the subject names to drop down
+        let options = dropdown.selectAll("options")
+            .data(subjects)
+            .enter()
+            .append("option");
+        options.text(sub => sub).attr("value", sub => sub);
+
+        // Create function for the option change
+        function optionSelect(){
+            let selectedSubject = d3.select(this).property("value");
+            updateGraphs(selectedSubject);
+        };
+init();
+});
 
