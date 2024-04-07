@@ -78,7 +78,7 @@ function optionChanged(){
 dropdown.on("change", optionChanged);
 
 // Update charts
-function updateCharts(selectedSubject) {
+function updateGraphs(selectedSubject) {
     let filteredSamples = sample_set.filter(sample => sample.id == selectedSubject)
         
     // Update bar grpah
@@ -99,7 +99,7 @@ function updateCharts(selectedSubject) {
         
     // update demographic card
     let metaDataInfo = d3.select("#sample-metadata");
-    let filtered_metadata = metadata.filter(sample => sample.id == "940")[0];
+    let filtered_metadata = metadata.filter(sample => sample.id == selectedSubject)[0];
     Object.entries(filtered_metadata).forEach(([key, v]) => {
         metaDataInfo.append("p").text(`${key}: ${v}`);
     });
